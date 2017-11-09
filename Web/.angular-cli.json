@@ -19,16 +19,22 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "./assets/sass/material-dashboard.scss"
+        "./assets/css/bootstrap.css",
+        "./assets/css/perfect-scrollbar.css",
+        "./assets/sass/material-dashboard.scss",
+        "./assets/css/demo.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        
+        "./assets/js/jquery.js",
+        "./assets/js/bootstrap.js",
+        "./assets/js/ripples.js",
         "./assets/js/material.min.js",
-        "../node_modules/arrive/src/arrive.js",
+        "./assets/js/arrive.js",
         "../node_modules/moment/moment.js",
-        "../node_modules/bootstrap-notify/bootstrap-notify.js",
+                
+        "./assets/js/perfect-scrollbar.js",
+        "./assets/js/bootstrap-notify.js",
         "../node_modules/chartist/dist/chartist.js"
       ],
       "environmentSource": "environments/environment.ts",
