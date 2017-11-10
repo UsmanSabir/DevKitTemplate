@@ -1,19 +1,18 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
-import 'rxjs/add/operator/filter';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
+import { NavbarComponent } from './core/navbar/navbar.component';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import PerfectScrollbar from 'perfect-scrollbar';
-import { NavbarComponent } from '../../core/navbar/navbar.component';
 
 declare const $: any;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AdminComponent implements OnInit {
   private _router: Subscription;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
