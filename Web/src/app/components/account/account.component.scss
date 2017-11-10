@@ -1,4 +1,4 @@
-@import "../../../assets/css/material-kit.css";
+// @import "../../../assets/css/material-kit.css";
 
 
 // @import "../../../assets/sass/md/_mixins.scss";
@@ -6,3 +6,60 @@
 //@import "../../../assets/sass/material-kit.scss";
 
 //@import "./~/assets/sass/material-kit.scss";
+
+.text-divider {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+
+ .wrapper > .header {
+    min-height: 100vh;
+}
+
+.header-filter {
+    position: relative;
+}
+
+.header-filter .container {
+    z-index: 2;
+    position: relative;
+}
+
+.navbar-absolute {
+    position: absolute;
+    width: 100%;
+    padding-top: 10px;
+    z-index: 1031;
+}
+
+.navbar.navbar-transparent {
+    background-color: transparent;
+    box-shadow: none;
+    color: #fff;
+    padding-top: 25px;
+}
+
+.signup-page .footer{
+border: none
+}
+
+.footer .copyright, .footer .container a {
+    color: #FFFFFF;
+}
+
+.wrapper .card {
+    margin: 160px 0 40px;
+}
+
+.header-filter:after {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.4);
+}

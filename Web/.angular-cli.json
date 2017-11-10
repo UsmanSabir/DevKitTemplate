@@ -21,8 +21,7 @@
       "styles": [
         "./assets/css/bootstrap.css",
         "./assets/css/perfect-scrollbar.css",
-        "./assets/sass/material-dashboard.scss",
-        "./assets/sass/material-kit.scss"        
+        "./assets/sass/material-dashboard.scss"
       ],
       "scripts": [
         
