@@ -23,15 +23,13 @@
         "./assets/css/perfect-scrollbar.css",
         "./assets/sass/material-dashboard.scss"
       ],
-      "scripts": [
-        
+      "scripts": [        
         "./assets/js/jquery.js",
         "./assets/js/bootstrap.js",
         "./assets/js/ripples.js",
         "./assets/js/material.min.js",
         "./assets/js/arrive.js",
-        "../node_modules/moment/moment.js",
-                
+        "../node_modules/moment/moment.js",                
         "./assets/js/perfect-scrollbar.js",
         "./assets/js/bootstrap-notify.js",
         "../node_modules/chartist/dist/chartist.js"
