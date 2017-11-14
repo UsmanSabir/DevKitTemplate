@@ -1,4 +1,6 @@
 <div class="card">
+    <form #loginForm="ngForm" method="post" novalidate (ngSubmit)="loginForm.form.valid && login()">
+        
   <div class="card-header" data-background-color="purple">
     <div class="header header-primary text-center">
       <h4>Login</h4>
@@ -18,34 +20,53 @@
 
   <div class="card-content">
     <p class="text-divider">Or Be Classical</p>
-
+  
+    
     <div class="input-group">
-      <span class="input-group-addon">
-        <i class="material-icons">face</i>
-      </span>
-      <input type="text" class="form-control" placeholder="Username...">
+        <span class="input-group-addon">
+            <i class="material-icons">face</i>
+          </span>
+        
+        <div class="form-group label-floating" [ngClass]="{ 'has-error' : (loginForm.submitted && !username.valid) || (username.invalid && username.touched) }" >
+        <label class="control-label">Username</label>
+        <input type="text" class="form-control" autoFocus
+        [(ngModel)]="model.username" name="username" #username="ngModel" required  />
+        <!-- <span class="material-icons form-control-feedback">clear</span> -->
+        <div *ngIf="(loginForm.submitted && !username.valid) || (username.invalid && username.touched)" class="help-block">Username is required</div>
+      </div>
     </div>
 
-
     <div class="input-group">
-      <span class="input-group-addon">
-        <i class="material-icons">lock_outline</i>
-      </span>
-      <input type="password" placeholder="Password..." class="form-control" />
-    </div>
+        <span class="input-group-addon">
+            <i class="material-icons">lock_outline</i>
+          </span>
+        
+        <div class="form-group label-floating" [ngClass]="{ 'has-error' : (loginForm.submitted && !password.valid) || (password.invalid && password.touched) }" >
+        <label class="control-label">Password</label>
+        <input type="password" class="form-control" 
+        [(ngModel)]="model.password" name="password" #password="ngModel" required  />
+        <!-- <span class="material-icons form-control-feedback">clear</span> -->
+        <div *ngIf="(loginForm.submitted && !password.valid) || (password.invalid && password.touched)" class="help-block">Password is required</div>
+      </div></div>
 
     <!-- If you want to add a checkbox to this form, uncomment this code
 -->
-              <div class="checkbox">
+              <!-- <div class="checkbox">
                 <label>
                   <input type="checkbox" name="optionsCheckboxes" checked>
                   Remember me
                 </label>
-              </div> 
+              </div>  -->
+
+           
+
   </div>
 
   <div class="footer text-center">
     <!-- class="footer text-center" -->
-    <a href="#pablo" class="btn btn-simple btn-primary btn-lg">Get Started</a>
+    <button [disabled]="loading"  class="btn btn-simple btn-primary btn-lg">Get Started</button>
+    
   </div>
+</form>
+
 </div>

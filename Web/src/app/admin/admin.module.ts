@@ -8,9 +8,10 @@ import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CoreModule } from '../core/core.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    imports: [RouterModule, AdminRoutingModule, CoreModule],
+    imports: [RouterModule, AdminRoutingModule, SharedModule],
     exports: [],
     declarations: [AdminComponent, DashboardComponent, FooterComponent,
         NavbarComponent,
