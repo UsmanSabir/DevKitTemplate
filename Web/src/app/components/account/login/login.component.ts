@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpinnerService } from '../../../core/spinner/spinner.service';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +12,20 @@ export class LoginComponent implements OnInit {
   loading: boolean = false;
   model: any = {};
   
-  constructor(private spinnerService: SpinnerService) { }
+  constructor(private spinnerService: SpinnerService, private loginService: LoginService) { }
 
   ngOnInit() {
   }
 
   login(): void {
-    this.spinnerService.show();
-    
+    this.spinnerService.show();    
     this.loading = true;
-    // this.loginService.authenticate(
-    //     () => this.loading = false
-    // );
+    this.loginService.login(this.model.username, this.model.password,
+        () => {
+          this.loading = false;
+          this.spinnerService.hide();   
+        }
+    );
 
     console.log(this.model);
 }

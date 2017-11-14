@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app.routing';
 import { AdminModule } from './admin/admin.module';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { AppConfig } from './app.config';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -16,13 +18,14 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     RouterModule,
+    HttpClientModule,
     AppRoutingModule,
     SharedModule, 
     AdminModule,
     CoreModule,
     FormsModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AppConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

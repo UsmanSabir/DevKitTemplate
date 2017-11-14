@@ -8,11 +8,13 @@ import { AccountRoutingModule } from './account-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '../../core/core.module';
 import { SharedModule } from '../../shared/shared.module';
+import {HttpClientModule} from '@angular/common/http';
+import { LoginService } from './login/login.service';
 
 @NgModule({
-    imports: [RouterModule, AccountRoutingModule, SharedModule, FormsModule,  ReactiveFormsModule],
+    imports: [RouterModule, AccountRoutingModule, SharedModule, FormsModule,  ReactiveFormsModule, HttpClientModule ],
     exports: [],
     declarations: [LoginComponent, AccountComponent, RegisterComponent],
-    providers: [],
+    providers: [LoginService],
 })
 export class AccountModule { }
