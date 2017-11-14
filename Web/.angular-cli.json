@@ -19,9 +19,21 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "./assets/css/bootstrap.css",
+        "./assets/css/perfect-scrollbar.css",
+        "./assets/sass/material-dashboard.scss"
       ],
-      "scripts": [],
+      "scripts": [        
+        "./assets/js/jquery.js",
+        "./assets/js/bootstrap.js",
+        "./assets/js/ripples.js",
+        "./assets/js/material.min.js",
+        "./assets/js/arrive.js",
+        "../node_modules/moment/moment.js",                
+        "./assets/js/perfect-scrollbar.js",
+        "./assets/js/bootstrap-notify.js",
+        "../node_modules/chartist/dist/chartist.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -54,7 +66,8 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
-    "component": {}
+    "styleExt": "scss",
+    "component": {
+    }
   }
 }
