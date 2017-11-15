@@ -29,7 +29,8 @@
         "./assets/js/ripples.js",
         "./assets/js/material.min.js",
         "./assets/js/arrive.js",
-        "../node_modules/moment/moment.js",                
+        "../node_modules/moment/moment.js",
+        "../node_modules/localforage/dist/localforage.min.js",
         "./assets/js/perfect-scrollbar.js",
         "./assets/js/bootstrap-notify.js",
         "../node_modules/chartist/dist/chartist.js"

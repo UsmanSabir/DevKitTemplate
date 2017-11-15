@@ -29,8 +29,9 @@
         
         <div class="form-group label-floating" [ngClass]="{ 'has-error' : (loginForm.submitted && !username.valid) || (username.invalid && username.touched) }" >
         <label class="control-label">Username</label>
-        <input type="text" class="form-control" autoFocus
-        [(ngModel)]="model.username" name="username" #username="ngModel" required  />
+        <input type="text" class="form-control" 
+        [(ngModel)]="model.username" name="username" #username="ngModel" required  /> 
+        <!-- autoFocus -->
         <!-- <span class="material-icons form-control-feedback">clear</span> -->
         <div *ngIf="(loginForm.submitted && !username.valid) || (username.invalid && username.touched)" class="help-block">Username is required</div>
       </div>

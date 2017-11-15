@@ -10,12 +10,13 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { LoggerService } from './logger.service';
+import { LocalStorageService } from './local-storage.service';
 
 @NgModule({
     imports: [CommonModule, RouterModule ],
     exports: [SpinnerComponent],
     declarations: [SpinnerComponent],
-    providers: [AuthService, AuthGuard, JwtHelper, SpinnerService, LoggerService],
+    providers: [AuthService, AuthGuard, JwtHelper, SpinnerService, LoggerService, LocalStorageService],
 })
 export class CoreModule {
     constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
