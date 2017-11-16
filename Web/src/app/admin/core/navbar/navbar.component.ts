@@ -1,6 +1,9 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { AuthService } from '../../../core/auth/auth.service';
+import { LocalStorageService } from '../../../core/local-storage.service';
+import { User } from '../../../shared/models/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -12,10 +15,12 @@ export class NavbarComponent implements OnInit {
     location: Location;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    user: User;
 
-    constructor(location: Location,  private element: ElementRef) {
+    constructor(location: Location,  private element: ElementRef, private authService: AuthService, private localStorageService: LocalStorageService) {
       this.location = location;
           this.sidebarVisible = false;
+          this.user = JSON.parse(localStorage.getItem('user'));
     }
 
     ngOnInit() {
@@ -63,5 +68,9 @@ export class NavbarComponent implements OnInit {
           }
       }
       return 'Dashboard';
+    }
+
+    logout(){
+        this.authService.logout();
     }
 }

@@ -1,7 +1,7 @@
 
 export interface User{
     id?: string;
-    name: string;
+    firstName: string;
     username: string;
      password: string;
      token: string;

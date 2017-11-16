@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   model: any = {};
   returnUrl: string;
   
-  constructor(private spinnerService: SpinnerService, private route: ActivatedRoute, private loginService: AuthService) { }
+  constructor(private spinnerService: SpinnerService, private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit() {
     // get return url from route parameters or default to '/'
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.spinnerService.show();    
     this.loading = true;
-    this.loginService.login(this.model.username, this.model.password,
+    this.authService.login(this.model.username, this.model.password,
         () => {
           this.loading = false;
           this.spinnerService.hide();   
