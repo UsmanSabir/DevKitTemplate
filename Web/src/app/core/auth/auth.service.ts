@@ -6,6 +6,7 @@ import { User } from '../../shared/models/user.model';
 import { LocalStorageService } from '../local-storage.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Router } from '@angular/router';
+import { ToastService } from '../toast.service';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +17,7 @@ isloggedIn: boolean;
 loggedIn$ = new BehaviorSubject<boolean>(this.isloggedIn);
 
 
-  constructor(public jwtHelper: JwtHelper, private router: Router,
+  constructor(public jwtHelper: JwtHelper, private router: Router, private toastService: ToastService,
     private httpClient: HttpClient, private localStorageService: LocalStorageService) {
       // If authenticated, set local profile property and update login status subject
     if (this.authenticated) {
@@ -72,17 +73,19 @@ loggedIn$ = new BehaviorSubject<boolean>(this.isloggedIn);
               }
               },
               error=>{
-                
+                callback();
                 console.error(error);
                 if (error.error instanceof Error) {
                   // A client-side or network error occurred. Handle it accordingly.
                   console.log('An error occurred:', error.error.message);
+                  this.toastService.showError('Cannot reach server. Try again...');
                 } else {
                   // The backend returned an unsuccessful response code.
                   // The response body may contain clues as to what went wrong,
                   console.log(`Backend returned code ${error.status}, body was: ${error.error}`);
+                  this.toastService.showError(`Login failed.`);
                 }
-              },
+              }, 
               () => {
                 console.log('Request Complete');
                 callback();

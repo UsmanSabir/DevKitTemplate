@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
 import { AppConfig } from './shared/app.config';
+import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 
 
 @NgModule({
@@ -23,9 +24,11 @@ import { AppConfig } from './shared/app.config';
     SharedModule, 
     AdminModule,
     CoreModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+    SnotifyModule
   ],
-  providers: [],
+  providers: [{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+  SnotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

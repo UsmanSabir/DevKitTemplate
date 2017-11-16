@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpinnerService } from '../../../core/spinner/spinner.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth.service';
+import { ToastService } from '../../../core/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   model: any = {};
   returnUrl: string;
   
-  constructor(private spinnerService: SpinnerService, private route: ActivatedRoute, private authService: AuthService) { }
+  constructor(private spinnerService: SpinnerService, private route: ActivatedRoute,
+     private authService: AuthService) { }
 
   ngOnInit() {
     // get return url from route parameters or default to '/'
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
+    
     this.spinnerService.show();    
     this.loading = true;
     this.authService.login(this.model.username, this.model.password,
@@ -32,7 +35,7 @@ export class LoginComponent implements OnInit {
         this.returnUrl
     );
 
-    console.log(this.model);
+    // console.log(this.model);
 }
 
 

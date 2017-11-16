@@ -1,0 +1,22 @@
+//customized
+.material {
+    @import "./snotify/material"; 
+  }
+  .simple {
+    @import "./snotify/simple";
+  }
+  .dark {
+    @import "./snotify/dark";
+  }
+  
+
+  
+  .snotify-icon {
+    object-fit: cover;
+    width: 40%;
+    height: 40%;
+    object-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  
