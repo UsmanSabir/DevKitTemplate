@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 import { AppConfig } from '../../shared/app.config';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../shared/models/user.model';
@@ -17,7 +16,7 @@ isloggedIn: boolean;
 loggedIn$ = new BehaviorSubject<boolean>(this.isloggedIn);
 
 
-  constructor(public jwtHelper: JwtHelper, private router: Router, private toastService: ToastService,
+  constructor(private router: Router, private toastService: ToastService,
     private httpClient: HttpClient, private localStorageService: LocalStorageService) {
       // If authenticated, set local profile property and update login status subject
     if (this.authenticated) {
@@ -27,17 +26,22 @@ loggedIn$ = new BehaviorSubject<boolean>(this.isloggedIn);
 
   // https://github.com/auth0/angular2-jwt
   public loggedIn(): boolean {
-    // const token = localStorage.getItem('token');
+     const token = localStorage.getItem('token');
+     if(token){
+       return true;
+      } else {
+       return false;
+      }
     // // Check whether the token is expired and return
     // // true or false
     // return !this.jwtHelper.isTokenExpired(token);
 
-    return tokenNotExpired();
+    //return tokenNotExpired();
   }
 
   get authenticated() {
     // Check if there's an unexpired access token
-    return tokenNotExpired('token');
+    return this.loggedIn(); //tokenNotExpired('token');
   }
 
 
@@ -82,7 +86,7 @@ loggedIn$ = new BehaviorSubject<boolean>(this.isloggedIn);
                 } else {
                   // The backend returned an unsuccessful response code.
                   // The response body may contain clues as to what went wrong,
-                  console.log(`Backend returned code ${error.status}, body was: ${error.error}`);
+                  console.log(`Backend returned code ${error.status}, body was: ${error.error}`); // statusText
                   this.toastService.showError(`Login failed.`);
                 }
               }, 

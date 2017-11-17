@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
-import { JwtHelper } from 'angular2-jwt';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
 import { throwIfAlreadyLoaded } from './module-import-guard';
@@ -17,7 +16,7 @@ import { ToastService } from './toast.service';
     imports: [CommonModule, RouterModule ],
     exports: [SpinnerComponent],
     declarations: [SpinnerComponent],
-    providers: [AuthService, AuthGuard, JwtHelper, SpinnerService, LoggerService, LocalStorageService, ToastService],
+    providers: [AuthService, AuthGuard, SpinnerService, LoggerService, LocalStorageService, ToastService],
 })
 export class CoreModule {
     constructor( @Optional() @SkipSelf() parentModule: CoreModule) {

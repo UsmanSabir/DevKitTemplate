@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service';
-import { JwtHelper } from 'angular2-jwt';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private auth: AuthService, private router: Router, private jwtHelper: JwtHelper) {}
+  constructor(private auth: AuthService, private router: Router) {}
   
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -20,10 +19,10 @@ export class AuthGuard implements CanActivate {
       // decode the token to get its payload
       
   
-      const tokenPayload = this.jwtHelper.decodeToken(token);
-      if (tokenPayload.role !== expectedRole) {
-          isLoggedIn = false;
-        }
+      // const tokenPayload = this.jwtHelper.decodeToken(token);
+      // if (tokenPayload.role !== expectedRole) {
+      //     isLoggedIn = false;
+      //   }
     }
     
     if (!isLoggedIn) {
