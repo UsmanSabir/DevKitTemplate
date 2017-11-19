@@ -4,12 +4,12 @@ import { RouterModule } from '@angular/router';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
-import { AdminModule } from './admin/admin.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
 import { AppConfig } from './shared/app.config';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
+import { MainModule } from './main/main.module';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
     RouterModule,
     AppRoutingModule,
     SharedModule,
-    AdminModule,
+    MainModule,
     CoreModule,
     FormsModule, ReactiveFormsModule,
     SnotifyModule

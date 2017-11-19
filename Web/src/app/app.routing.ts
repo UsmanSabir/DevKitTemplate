@@ -7,15 +7,15 @@ import { AccountComponent } from './components/account/account.component';
 
 const routes: Routes = [
    // { path: 'dashboard',      component: DashboardComponent },
-      { path: '',          redirectTo: 'admin/dashboard', pathMatch: 'full' },
+      { path: '',          redirectTo: 'main/dashboard', pathMatch: 'full' },
       {
         path: 'account',
         loadChildren: './components/account/account.module#AccountModule', // Lazy load account module
         data: { preload: true }
     },
     {
-      path: 'admin',
-      loadChildren: './admin/admin.module#AdminModule', // Lazy load admin module
+      path: 'main',
+      loadChildren: './main/main.module#MainModule', // Lazy load admin module
       data: { preload: true }
   }
 ];
