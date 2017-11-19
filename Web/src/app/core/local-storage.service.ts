@@ -19,7 +19,7 @@ export class LocalStorageService {
         }
 
         localForage.setItem(key, value);
-    };
+    }
 
     removeItem(key): void {
         if (!localForage) {
@@ -27,5 +27,5 @@ export class LocalStorageService {
         }
 
         localForage.removeItem(key);
-    };
+    }
 }

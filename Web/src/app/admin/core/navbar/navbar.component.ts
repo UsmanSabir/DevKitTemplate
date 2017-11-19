@@ -17,7 +17,8 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
     user: User;
 
-    constructor(location: Location,  private element: ElementRef, private authService: AuthService, private localStorageService: LocalStorageService) {
+    constructor(location: Location,  private element: ElementRef,
+        private authService: AuthService, private localStorageService: LocalStorageService) {
       this.location = location;
           this.sidebarVisible = false;
           this.user = JSON.parse(localStorage.getItem('user'));
@@ -38,13 +39,14 @@ export class NavbarComponent implements OnInit {
         body.classList.add('nav-open');
 
         this.sidebarVisible = true;
-    };
+    }
     sidebarClose() {
         const body = document.getElementsByTagName('body')[0];
         this.toggleButton.classList.remove('toggled');
         this.sidebarVisible = false;
         body.classList.remove('nav-open');
-    };
+    }
+
     sidebarToggle() {
         // const toggleButton = this.toggleButton;
         // const body = document.getElementsByTagName('body')[0];
@@ -53,24 +55,24 @@ export class NavbarComponent implements OnInit {
         } else {
             this.sidebarClose();
         }
-    };
+    }
 
-    getTitle(){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
+    getTitle() {
+      let titlee = this.location.prepareExternalUrl(this.location.path());
+      if (titlee.charAt(0) === '#') {
           titlee = titlee.slice( 2 );
       }
       titlee = titlee.split('/').pop();
 
-      for(let item = 0; item < this.listTitles.length; item++){
-          if(this.listTitles[item].path === titlee){
+      for (let item = 0; item < this.listTitles.length; item++) {
+          if (this.listTitles[item].path === titlee) {
               return this.listTitles[item].title;
           }
       }
       return 'Dashboard';
     }
 
-    logout(){
+    logout() {
         this.authService.logout();
     }
 }

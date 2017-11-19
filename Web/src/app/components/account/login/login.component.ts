@@ -11,12 +11,12 @@ import { ToastService } from '../../../core/toast.service';
 })
 export class LoginComponent implements OnInit {
 
-  loading: boolean = false;
+  loading = false;
   model: any = {};
   returnUrl: string;
-  
+
   constructor(private spinnerService: SpinnerService, private route: ActivatedRoute,
-     private authService: AuthService) { }
+    private authService: AuthService) { }
 
   ngOnInit() {
     // get return url from route parameters or default to '/'
@@ -24,19 +24,17 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    
-    this.spinnerService.show();    
+
+    this.spinnerService.show();
     this.loading = true;
     this.authService.login(this.model.username, this.model.password,
-        () => {
-          this.loading = false;
-          this.spinnerService.hide();   
-        },
-        this.returnUrl
+      () => {
+        this.loading = false;
+        this.spinnerService.hide();
+      },
+      this.returnUrl
     );
-
-    // console.log(this.model);
-}
+  }
 
 
 }

@@ -13,7 +13,7 @@ namespace Api.Services
         {
             return new User{
                 Username = user,
-                
+                FirstName = user
             };
         }
     }

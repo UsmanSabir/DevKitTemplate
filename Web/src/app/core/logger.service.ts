@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class LoggerService {
 
-    log(msg: string){
-        console.log(msg);
+    log(msg: any, ...optionalParams: any[]) {
+        console.log(msg, optionalParams);
     }
 
-    error(msg: string) {
-        console.error(msg);
-      }
-      
+    error(msg: any, ...optionalParams: any[]) {
+        console.error(msg, optionalParams);
+    }
+
 }

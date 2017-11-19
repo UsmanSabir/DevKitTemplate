@@ -5,12 +5,11 @@ import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { AdminModule } from './admin/admin.module';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
 import { AppConfig } from './shared/app.config';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
-import { JwtModule } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -20,21 +19,12 @@ import { JwtModule } from '@auth0/angular-jwt';
   imports: [
     BrowserModule,
     RouterModule,
-    HttpClientModule,
     AppRoutingModule,
-    SharedModule, 
+    SharedModule,
     AdminModule,
     CoreModule,
     FormsModule, ReactiveFormsModule,
-    SnotifyModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: () => {
-          return localStorage.getItem('token');
-        },
-        whitelistedDomains: ['localhost:5000']
-      }
-    })
+    SnotifyModule
   ],
   providers: [{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
   SnotifyService],
