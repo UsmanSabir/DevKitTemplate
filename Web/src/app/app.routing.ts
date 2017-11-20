@@ -15,7 +15,7 @@ const routes: Routes = [
     },
     {
       path: 'main',
-      loadChildren: './main/main.module#MainModule', // Lazy load admin module
+      loadChildren: './main/main.module#MainModule', // Lazy load main module
       data: { preload: true }
   }
 ];

@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, forwardRef, Injector } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -13,6 +13,7 @@ import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/do';
 import { LoggerService } from '../logger.service';
+import { AuthService } from './auth.service';
 
 // Adapted from https://github.com/auth0/angular2-jwt/blob/v1.0/src/jwt.interceptor.ts
 
@@ -22,19 +23,33 @@ export class JwtInterceptor implements HttpInterceptor {
   headerName: string;
   authScheme: string;
   skipWhenExpired = false;
+  authServiceLocal: AuthService;
 
-  constructor(
-    public jwtHelper: JwtHelperService, private logger: LoggerService
+  constructor(private inj: Injector, // @Inject(forwardRef(() => AuthService)) private authService: AuthService,
+    // public jwtHelper: JwtHelperService,
+    private logger: LoggerService
   ) {
-    this.tokenGetter = this.getTokenFromLocalStorage;
+
+    this.tokenGetter = this.getTokenFromService; // getTokenFromService;
     this.headerName = 'Authorization';
     this.authScheme = 'Bearer ';
 
   }
 
+  private get authService(): AuthService {
+    if (!this.authServiceLocal) {
+      this.authServiceLocal = this.inj.get(AuthService);
+    }
+    return this.authServiceLocal;
+  }
+
   private getTokenFromLocalStorage() {
     const token = JSON.parse(localStorage.getItem('token'));
     return token;
+  }
+
+  private getTokenFromService() {
+    return this.authService.getAccessToken();
   }
 
   handleInterception(
@@ -45,7 +60,7 @@ export class JwtInterceptor implements HttpInterceptor {
     let tokenIsExpired: boolean;
 
     if (this.skipWhenExpired) {
-      tokenIsExpired = token ? this.jwtHelper.isTokenExpired(token) : true;
+     // tokenIsExpired = token ? this.jwtHelper.isTokenExpired(token) : true;
     }
 
     if (token && tokenIsExpired && this.skipWhenExpired) {
@@ -58,20 +73,20 @@ export class JwtInterceptor implements HttpInterceptor {
       });
     }
     return next.handle(request)
-    .do((event: HttpEvent<any>) => {
-            if (event instanceof HttpResponse) {
-              // do stuff with response if you want
-            }
-          }, (err: any) => {
-            if (err instanceof HttpErrorResponse) {
-              if (err.status === 401) {
-                // redirect to the login route
-                // or show a modal
-                this.logger.error('Request failed - User not authorized');
-              }
-            }
+      .do((event: HttpEvent<any>) => {
+        if (event instanceof HttpResponse) {
+          // do stuff with response if you want
+        }
+      }, (err: any) => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 401) {
+            // redirect to the login route
+            // or show a modal
+            this.logger.error('Request failed - User not authorized');
           }
-    );
+        }
+      }
+      );
   }
 
   intercept(

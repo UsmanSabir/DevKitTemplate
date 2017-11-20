@@ -7,9 +7,9 @@ import { AppRoutingModule } from './app.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
-import { AppConfig } from './shared/app.config';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 import { MainModule } from './main/main.module';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 
 @NgModule({
@@ -22,9 +22,10 @@ import { MainModule } from './main/main.module';
     AppRoutingModule,
     SharedModule,
     MainModule,
-    CoreModule,
+    CoreModule.forRoot(),
     FormsModule, ReactiveFormsModule,
-    SnotifyModule
+    SnotifyModule,
+    OAuthModule.forRoot()
   ],
   providers: [{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
   SnotifyService],

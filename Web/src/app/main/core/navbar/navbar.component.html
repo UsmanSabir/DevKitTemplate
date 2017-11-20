@@ -37,9 +37,9 @@
                        <p class="hidden-lg hidden-md">User</p>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0)">{{user.firstName}}</a></li>
+                        <li><a href="javascript:void(0)" (click)="testApi()" >{{user}}</a></li>
                         <li class="divider"></li>
-                        <li><a href="#" (click)="logout()" >Log Out</a></li>                        
+                        <li><a href="javascript:void(0)" (click)="logout()" >Log Out</a></li>                        
                     </ul>
                 </li>
             </ul>

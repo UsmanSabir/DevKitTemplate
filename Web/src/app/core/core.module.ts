@@ -1,5 +1,5 @@
 import { FormsModule } from '@angular/forms';
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { NgModule, Optional, SkipSelf, ModuleWithProviders, ErrorHandler } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -14,21 +14,37 @@ import { ToastService } from './toast.service';
 import { JwtHelperService } from './auth/jwthelper.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './auth/jwt.interceptor';
+import { GlobalErrorHandler } from './global-error.service';
 
 @NgModule({
     imports: [CommonModule, RouterModule, HttpClientModule],
     exports: [SpinnerComponent],
     declarations: [SpinnerComponent],
-    providers: [AuthService, AuthGuard, SpinnerService, LoggerService, LocalStorageService, ToastService,
-        JwtHelperService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: JwtInterceptor,
-            multi: true
-          }],
+    providers: [],
 })
 export class CoreModule {
+
+    // https://angular.io/guide/ngmodule#configure-core-services-with-coremoduleforroot
+    public static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: CoreModule,
+            providers: [
+                AuthService, AuthGuard, SpinnerService,
+                LoggerService, LocalStorageService, ToastService,
+                JwtHelperService,
+                {
+                    provide: HTTP_INTERCEPTORS,
+                    useClass: JwtInterceptor,
+                    multi: true
+                  },
+                { provide: ErrorHandler, useClass: GlobalErrorHandler }
+
+            ]
+        };
+    }
+
     constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
         throwIfAlreadyLoaded(parentModule, 'CoreModule');
     }
+
 }

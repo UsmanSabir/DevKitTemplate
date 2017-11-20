@@ -6,22 +6,25 @@ export class ToastService {
 
   constructor(private snotifyService: SnotifyService) { }
 
-  showError(err){
+  showError(err) {
     this.snotifyService.error(err, 'error');
 
-    //this.snotifyService.simple("this.body", "this.title");
+    // this.snotifyService.simple("this.body", "this.title");
   }
 
-  showSuccess(msg){
+  showSuccess(msg) {
     this.snotifyService.success(msg, 'success');
   }
 
-  showInfo(msg){
+  showInfo(msg) {
     this.snotifyService.info(msg, 'info');
   }
 
-  showWarning(msg){
+  showWarning(msg) {
     this.snotifyService.warning(msg, 'warning');
   }
 
+  formatErrors(errors: any) {
+    return errors ? errors.map((err: any) => err.message).join('/n') : '';
+  }
 }

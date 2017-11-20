@@ -4,6 +4,7 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 import { AuthService } from '../../../core/auth/auth.service';
 import { LocalStorageService } from '../../../core/local-storage.service';
 import { User } from '../../../shared/models/user.model';
+import { SpinnerService } from '../../../core/spinner/spinner.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,11 +18,11 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
     user: User;
 
-    constructor(location: Location,  private element: ElementRef,
+    constructor(location: Location,  private element: ElementRef, private spinner: SpinnerService,
         private authService: AuthService, private localStorageService: LocalStorageService) {
       this.location = location;
           this.sidebarVisible = false;
-          this.user = JSON.parse(localStorage.getItem('user'));
+          this.user = authService.name;
     }
 
     ngOnInit() {
@@ -73,6 +74,11 @@ export class NavbarComponent implements OnInit {
     }
 
     logout() {
-        this.authService.logout();
+        this.spinner.show();
+        this.authService.logout(() => this.spinner.hide());
+    }
+
+    testApi() {
+        this.authService.test();
     }
 }

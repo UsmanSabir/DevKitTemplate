@@ -16,14 +16,14 @@ export class AuthGuard implements CanActivate {
     let isLoggedIn = this.auth.loggedIn();
     if (isLoggedIn) {
       const expectedRole = next.data.expectedRole;
-      const token = localStorage.getItem('token');
+      const token =  this.auth.getAccessToken(); // localStorage.getItem('token');
       // decode the token to get its payload
 
 
-       const tokenPayload = this.jwtHelper.decodeToken(token);
-       if (tokenPayload.role !== expectedRole) {
-           isLoggedIn = false;
-         }
+      //  const tokenPayload = this.jwtHelper.decodeToken(token);
+      //  if (tokenPayload.role !== expectedRole) {
+      //      isLoggedIn = false;
+      //    }
     }
 
     if (!isLoggedIn) {
