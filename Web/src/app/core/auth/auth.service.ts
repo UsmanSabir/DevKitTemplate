@@ -20,7 +20,7 @@ export class AuthService {
 
 
   constructor(private router: Router, private toastService: ToastService, private logger: LoggerService,
-    // private localStorageService: LocalStorageService, 
+    // private localStorageService: LocalStorageService,
     private httpClient: HttpClient, private jwtHelper: JwtHelperService,
     private oAuthService: OAuthService) {
     // If authenticated, set local profile property and update login status subject

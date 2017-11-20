@@ -19,10 +19,10 @@ export function authConfig(url: string): AuthConfig {
         // The first three are defined by OIDC.
         scope: 'openid profile email offline_access roles', // client_id scope causes refresh_token error
 
-        
+
         // oidc: false,
 
-    
+
 
     };
 

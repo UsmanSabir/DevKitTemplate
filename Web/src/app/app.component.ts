@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
     // this.oauthService.setupAutomaticSilentRefresh();
     this.hookEvent();
     if (this.oauthService.hasValidAccessToken()) {
-      (<any>this.oauthService).setupExpirationTimers(); //setupRefreshTimer(); // a hack
+      (<any>this.oauthService).setupExpirationTimers(); // a HACK
     }
     // Load Discovery Document and then try to login the user
     const discvryUrl = AppConfig.apiUrl + '/.well-known/openid-configuration';
