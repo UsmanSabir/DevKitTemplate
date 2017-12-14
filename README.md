@@ -1,5 +1,7 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
+----------
+
 # MSDevKit 
 Microsoft Developer Kit, a startup template (http://www.msdevkit.com) for Angular 5 and .Net Core 2.0 application.
 
@@ -23,6 +25,11 @@ Microsoft Developer Kit, a startup template (http://www.msdevkit.com) for Angula
 ##Screenshot
 
 ![Login](https://github.com/UsmanSabir/DevKitTemplate/raw/master/Resources/Login.PNG)
+
+
+----------
+
+
 ![Dashboard](https://github.com/UsmanSabir/DevKitTemplate/raw/master/Resources/Dashboard.PNG)
 
 ## Pre-requisites
@@ -37,6 +44,7 @@ Microsoft Developer Kit, a startup template (http://www.msdevkit.com) for Angula
 * Diagnostic Logging (.Net Core and Angular)
 * Audit Log
 * User Registration
-* Premium Version
-* 
+* Premium Version 
+
+
 
