@@ -21,9 +21,9 @@ Microsoft Developer Kit, a startup template (http://www.msdevkit.com) for Angula
 * [Material Dashboard Theme](https://www.creative-tim.com/product/material-dashboard-angular2) implementation
 
 ##Screenshot
-![Login](http://hisabir.unaux.com/Uploads/MSDevKit_Screens/Login.PNG)
 
-![Dashboard](http://hisabir.unaux.com/Uploads/MSDevKit_Screens/Dashboard.PNG)
+![Login](/Resources/MSDevKit_Screens/Login.PNG?raw=true "Login screen")
+![Dashboard](/Resources/MSDevKit_Screens/Dashboard.PNG?raw=true "Dashboard screen")
 
 ## Pre-requisites
 
