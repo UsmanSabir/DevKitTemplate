@@ -22,8 +22,8 @@ Microsoft Developer Kit, a startup template (http://www.msdevkit.com) for Angula
 
 ##Screenshot
 
-![Login](/Resources/MSDevKit_Screens/Login.PNG?raw=true "Login screen")
-![Dashboard](/Resources/MSDevKit_Screens/Dashboard.PNG?raw=true "Dashboard screen")
+![Login](https://github.com/UsmanSabir/DevKitTemplate/raw/master/Resources/Login.PNG)
+![Dashboard](https://github.com/UsmanSabir/DevKitTemplate/raw/master/Resources/Dashboard.PNG)
 
 ## Pre-requisites
 
