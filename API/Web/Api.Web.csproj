@@ -2,7 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>WinExe</OutputType>
+    <StartupObject />
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20171120075119_openiddict.cs" />
+    <Compile Remove="Migrations\20171120075119_openiddict.Designer.cs" />
+    <Compile Remove="Migrations\20171220210420_OpenIdict_Table_Updates.cs" />
+    <Compile Remove="Migrations\20171220210420_OpenIdict_Table_Updates.Designer.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />

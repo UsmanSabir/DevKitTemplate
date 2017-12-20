@@ -22,7 +22,7 @@ Microsoft Developer Kit, a startup template (http://www.msdevkit.com) for Angula
 * Extensible User/Role identity implementation
 * [Material Dashboard Theme](https://www.creative-tim.com/product/material-dashboard-angular2) implementation
 
-##Screenshot
+## Screenshot
 
 ![Login](https://github.com/UsmanSabir/DevKitTemplate/raw/master/Resources/Login.PNG)
 
@@ -40,11 +40,14 @@ Microsoft Developer Kit, a startup template (http://www.msdevkit.com) for Angula
 
 **Make sure you have Node version >= latest LTS and NPM >= latest LTS
 
-##Roadmap
+## Roadmap
 * Diagnostic Logging (.Net Core and Angular)
 * Audit Log
 * User Registration
 * Premium Version 
 
+
+## Live Demo
+* [Demo Web](http://demo.msdevkit.com/) : hosted on Azure
 
 

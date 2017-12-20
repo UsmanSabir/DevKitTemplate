@@ -11,8 +11,8 @@ using System;
 namespace Api.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171120075119_openiddict")]
-    partial class openiddict
+    [Migration("20171220221455_OpenIddict")]
+    partial class OpenIddict
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -272,8 +272,6 @@ namespace Api.Web.Migrations
 
                     b.Property<string>("AuthorizationId");
 
-                    b.Property<string>("Ciphertext");
-
                     b.Property<string>("ConcurrencyToken")
                         .IsConcurrencyToken();
 
@@ -281,7 +279,9 @@ namespace Api.Web.Migrations
 
                     b.Property<DateTimeOffset?>("ExpirationDate");
 
-                    b.Property<string>("Hash");
+                    b.Property<string>("Payload");
+
+                    b.Property<string>("ReferenceId");
 
                     b.Property<string>("Status");
 
@@ -297,7 +297,7 @@ namespace Api.Web.Migrations
 
                     b.HasIndex("AuthorizationId");
 
-                    b.HasIndex("Hash")
+                    b.HasIndex("ReferenceId")
                         .IsUnique();
 
                     b.ToTable("OpenIddictTokens");
@@ -359,13 +359,11 @@ namespace Api.Web.Migrations
                 {
                     b.HasOne("OpenIddict.Models.OpenIddictApplication", "Application")
                         .WithMany("Tokens")
-                        .HasForeignKey("ApplicationId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ApplicationId");
 
                     b.HasOne("OpenIddict.Models.OpenIddictAuthorization", "Authorization")
                         .WithMany("Tokens")
-                        .HasForeignKey("AuthorizationId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("AuthorizationId");
                 });
 #pragma warning restore 612, 618
         }

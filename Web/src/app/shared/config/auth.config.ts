@@ -8,12 +8,13 @@ export function authConfig(url: string): AuthConfig {
     // a.
     return {
         // Url of the Identity Provider
-        issuer: 'http://localhost:57310/', // AppConfig.apiUrl + '/',
+        issuer: AppConfig.apiUrl + '/', // 'http://localhost:57310/', //
         // URL of the SPA to redirect the user to after login
-        redirectUri: 'http://localhost:4200/',
+        redirectUri: url, // 'http://localhost:4200/',
         // The SPA's id. The SPA is registered with this id at the auth-server
         clientId: 'WebApp',
-        tokenEndpoint: 'http://localhost:57310/connect/token', //  url + '/connect/token', // 'http://localhost:57310/connect/authorize', //
+        tokenEndpoint:  AppConfig.apiUrl + '/connect/token',
+        // 'http://localhost:57310/connect/token', 'http://localhost:57310/connect/authorize',
         requireHttps: false,
         // set the scope for the permissions the client should request
         // The first three are defined by OIDC.

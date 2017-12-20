@@ -11,8 +11,8 @@ using System;
 namespace Api.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171120073319_Initial")]
-    partial class Initial
+    [Migration("20171220221138_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -30,18 +30,18 @@ namespace Api.Web.Extensions
             {
                 string useSqLite = Startup.Configuration["ConnectionStrings:useSqLite"];
                 string useInMemory = Startup.Configuration["ConnectionStrings:useInMemory"];
-                if (useInMemory.ToLower() == "true")
-                {
-                    options.UseInMemoryDatabase("AspNetCoreSpa"); // Takes database name
-                }
-                else if (useSqLite.ToLower() == "true")
+                //if (useInMemory.ToLower() == "true")
+                //{
+                //    options.UseInMemoryDatabase("AspNetCoreSpa"); // Takes database name
+                //}
+                //else if (useSqLite.ToLower() == "true")
                 {
                     options.UseSqlite(Startup.Configuration["ConnectionStrings:Default"]);
                 }
-                else
-                {
-                    options.UseSqlServer(Startup.Configuration["ConnectionStrings:Default"]);
-                }
+                //else
+                //{
+                //    options.UseSqlServer(Startup.Configuration["ConnectionStrings:Default"]);
+                //}
 
                 // Register the entity sets needed by OpenIddict.
                 // Note: use the generic overload if you need
@@ -117,8 +117,8 @@ namespace Api.Web.Extensions
                 .AllowClientCredentialsFlow()
                 .AllowImplicitFlow();
 
-                options.SetAccessTokenLifetime(TimeSpan.FromSeconds(30)); //todo life time in mins
-                options.SetIdentityTokenLifetime(TimeSpan.FromSeconds(30));
+                options.SetAccessTokenLifetime(TimeSpan.FromMinutes(30)); 
+                options.SetIdentityTokenLifetime(TimeSpan.FromMinutes(30));
                 options.SetRefreshTokenLifetime(TimeSpan.FromMinutes(60));
 
                 
@@ -126,14 +126,14 @@ namespace Api.Web.Extensions
                 // encrypted format, the following lines are required:
                 //
                 options.UseJsonWebTokens();
-                if (Startup.HostingEnv.IsDevelopment())
+                //if (Startup.HostingEnv.IsDevelopment()) // Recomended for production
                     options.AddEphemeralSigningKey();
-                else
-                    options.AddSigningCertificate(new FileStream(Directory.GetCurrentDirectory() + "/Resources/cert.pfx", FileMode.Open), "password");
+                //else // Recomended for production
+                //    options.AddSigningCertificate(new FileStream(Directory.GetCurrentDirectory() + "/Resources/cert.pfx", FileMode.Open), "password");
 
                 // During development, you can disable the HTTPS requirement.
-                if (Startup.HostingEnv.IsDevelopment())
-                    options.DisableHttpsRequirement();
+                //if (Startup.HostingEnv.IsDevelopment()) // Recomended for production
+                options.DisableHttpsRequirement();
 
 
             });
@@ -168,7 +168,7 @@ namespace Api.Web.Extensions
                 //.AddOAuthValidation() // to use oAtuh authentication instead of jwt
                 .AddJwtBearer(x =>
                 {
-                    x.Authority = "http://localhost:57310/";
+                    x.Authority = Startup.Configuration["Auth:Authority"];
                     x.Audience = "resource_server";
                     x.RequireHttpsMetadata = false;
                     //x.SaveToken = true;
@@ -212,7 +212,7 @@ namespace Api.Web.Extensions
 
                     // Note: when using a custom entity or a custom key type, replace OpenIddictApplication by the appropriate type.
                     var manager = scope.ServiceProvider.GetRequiredService<OpenIddictApplicationManager<OpenIddictApplication>>();
-                    CancellationToken cancellationToken= CancellationToken.None;
+                    CancellationToken cancellationToken = CancellationToken.None;
 
                     string clientIdentifier = Startup.Configuration["Auth:ClientId"];
                     if (await manager.FindByClientIdAsync(clientIdentifier, cancellationToken) == null)
@@ -232,10 +232,10 @@ namespace Api.Web.Extensions
                     var userManager = scope.ServiceProvider.GetService<UserManager<ApplicationUser>>();
                     if (!userManager.Users.Any())
                     {
-                        
+
                         var user = new ApplicationUser() { UserName = "Test" };
                         var result = await userManager.CreateAsync(user, "12345");
-                        
+
                         if (result.Succeeded)
                         {
                             //user created
@@ -245,7 +245,7 @@ namespace Api.Web.Extensions
                             //failed
                         }
                     }
-                    
+
                 }
             }
 
