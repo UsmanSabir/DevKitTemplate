@@ -49,5 +49,7 @@ Microsoft Developer Kit, a startup template (http://www.msdevkit.com) for Angula
 
 ## Live Demo
 * [Demo Web](http://demo.msdevkit.com/) : hosted on Azure
+* Login with User: Test Password: 12345
+
 
 
